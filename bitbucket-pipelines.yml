@@ -1,0 +1,9 @@
+image: jmmorlesin/docker-maven-ant-awscli
+
+pipelines:
+  default:
+    - step:
+        script: 
+          - echo Deploying to S3
+          - aws s3 sync ./ s3://$S3_BUCKET_NAME --exclude '.git/*' --exclude 'bitbucket-pipelines.yml' --size-only
+       
